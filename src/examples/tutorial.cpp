@@ -2,6 +2,7 @@
 #include <robot_dart/robot_dart_simu.hpp>
 
 #include <robot_dart/control/pd_control.hpp>
+#include <robot_dart/control/action_control.hpp>
 
 #ifdef GRAPHIC
 #include <robot_dart/graphics/graphics.hpp>
@@ -57,9 +58,10 @@ int main()
 
     // add a PD-controller to the arm
     // set desired positions
-    std::vector<double> ctrl = {0.0, 1.0, -1.5, 1.0};
+    std::vector<double> ctrl = {1.0, 1.0, -1.5, 1.0};
     // add the controller to the robot
-    arm_robot->add_controller(std::make_shared<robot_dart::control::PDControl>(ctrl));
+    //arm_robot->add_controller(std::make_shared<robot_dart::control::PDControl>(ctrl));
+    arm_robot->add_controller(std::make_shared<robot_dart::control::ActionControl>(ctrl));
 
     // add the arm to the simulator
     simu.add_robot(arm_robot);
