@@ -61,7 +61,7 @@ def configure(conf):
         conf.load('python')
         conf.load('pybind')
 
-    conf.check_boost(lib='regex system filesystem unit_test_framework', min_version='1.58')
+    conf.check_boost(lib='regex system filesystem unit_test_framework iostreams', min_version='1.58')
     # we need pthread for video saving
     conf.check(features='cxx cxxprogram', lib=['pthread'], uselib_store='PTHREAD')
     conf.check_eigen(required=True, min_version=(3,2,92))
